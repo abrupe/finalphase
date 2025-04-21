@@ -117,11 +117,10 @@ export default function HomePage() {
   name="contact"
   method="POST"
   data-netlify="true"
-  netlify-honeypot="bot-field"
   onSubmit={(e) => {
     e.preventDefault();
     const form = e.target;
-  
+    
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -129,16 +128,14 @@ export default function HomePage() {
     })
       .then(() => {
         alert("Mensagem enviada com sucesso! ✨");
-        form.reset(); // <-- aqui ele limpa os campos
+        form.reset(); // limpa os campos!
       })
       .catch((error) => alert("Erro ao enviar: " + error));
   }}
-  
   className="space-y-4"
 >
   <input type="hidden" name="form-name" value="contact" />
-  <input name="bot-field" type="hidden" />
-
+  
   <input
     type="text"
     name="name"
