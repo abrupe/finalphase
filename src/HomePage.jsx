@@ -113,7 +113,18 @@ export default function HomePage() {
       Do you want to book a service with us? Send a Message!@
     </p>
 
-    <form name="contact" method="POST" data-netlify="true" className="space-y-4">
+    <form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  onSubmit={(e) => {
+    e.preventDefault();
+    alert("Mensagem enviada com sucesso! ✨");
+    e.target.submit();
+  }}
+  className="space-y-4"
+>
+
       <input
         type="hidden"
         name="form-name"
