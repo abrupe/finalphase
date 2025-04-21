@@ -117,50 +117,55 @@ export default function HomePage() {
   name="contact"
   method="POST"
   data-netlify="true"
+  netlify-honeypot="bot-field"
   onSubmit={(e) => {
     e.preventDefault();
-    alert("Mensagem enviada com sucesso! ✨");
-    e.target.submit();
+    const form = e.target;
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then(() => alert("Mensagem enviada com sucesso! ✨"))
+      .catch((error) => alert(error));
   }}
   className="space-y-4"
 >
+  <input type="hidden" name="form-name" value="contact" />
+  <input name="bot-field" type="hidden" />
 
-      <input
-        type="hidden"
-        name="form-name"
-        value="contact"
-      />
+  <input
+    type="text"
+    name="name"
+    placeholder="Seu nome"
+    required
+    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+  />
 
-      <input
-        type="text"
-        name="name"
-        placeholder="Your name"
-        required
-        className="w-full px-4 py-2 border border-gray-300 rounded-md"
-      />
+  <input
+    type="email"
+    name="email"
+    placeholder="Seu e-mail"
+    required
+    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+  />
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Your E-mail"
-        required
-        className="w-full px-4 py-2 border border-gray-300 rounded-md"
-      />
+  <textarea
+    name="message"
+    placeholder="Sua mensagem"
+    required
+    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+  />
 
-      <textarea
-        name="message"
-        placeholder="Your Message"
-        required
-        className="w-full px-4 py-2 border border-gray-300 rounded-md"
-      />
+  <button
+    type="submit"
+    className="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition"
+  >
+    Enviar
+  </button>
+</form>
 
-      <button
-        type="submit"
-        className="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition"
-      >
-        Enviar
-      </button>
-    </form>
   </div>
 </section>
 
