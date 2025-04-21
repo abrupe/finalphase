@@ -121,16 +121,19 @@ export default function HomePage() {
   onSubmit={(e) => {
     e.preventDefault();
     const form = e.target;
-
+  
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(new FormData(form)).toString(),
     })
-      .then(() => alert("Mensagem enviada com sucesso! ✨"))
-      .catch((error) => alert(error));
-      form.removeEventListener();
+      .then(() => {
+        alert("Mensagem enviada com sucesso! ✨");
+        form.reset(); // <-- aqui ele limpa os campos
+      })
+      .catch((error) => alert("Erro ao enviar: " + error));
   }}
+  
   className="space-y-4"
 >
   <input type="hidden" name="form-name" value="contact" />
