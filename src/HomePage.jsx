@@ -129,6 +129,7 @@ export default function HomePage() {
     })
       .then(() => alert("Mensagem enviada com sucesso! ✨"))
       .catch((error) => alert(error));
+      form.removeEventListener();
   }}
   className="space-y-4"
 >
