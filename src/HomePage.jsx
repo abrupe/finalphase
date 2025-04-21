@@ -106,13 +106,53 @@ export default function HomePage() {
             </section>
 
             {/* CONTACT */}
-            <section id="contact" className="py-16 px-6 max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl font-bold text-purple-700 mb-4">Get in Touch</h2>
-                <p className="text-gray-600 mb-6">Want to work with us or request a quote? Let’s make your space shine.</p>
-                <button className="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
-                    Contact Us
-                </button>
-            </section>
+            <section id="contact" className="py-20 px-6 bg-white text-center">
+  <div className="max-w-2xl mx-auto">
+    <h2 className="text-4xl font-bold text-purple-700 mb-4">Get in Touch</h2>
+    <p className="text-gray-600 mb-8 text-lg">
+      Do you want to book a service with us? Send a Message!@
+    </p>
+
+    <form name="contact" method="POST" data-netlify="true" className="space-y-4">
+      <input
+        type="hidden"
+        name="form-name"
+        value="contact"
+      />
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name"
+        required
+        className="w-full px-4 py-2 border border-gray-300 rounded-md"
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Your E-mail"
+        required
+        className="w-full px-4 py-2 border border-gray-300 rounded-md"
+      />
+
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        required
+        className="w-full px-4 py-2 border border-gray-300 rounded-md"
+      />
+
+      <button
+        type="submit"
+        className="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition"
+      >
+        Enviar
+      </button>
+    </form>
+  </div>
+</section>
+
 
             {/* FOOTER */}
             <footer className="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
